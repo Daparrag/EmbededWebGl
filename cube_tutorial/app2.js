@@ -106,40 +106,40 @@ var InitDemo = function () {
 	var CubeVertices = //triangle atribute declaration
 	[	//X,Y,Z 			    R,G,B
 		// Top
-		-1.0, 1.0, -1.0,   0.5, 0.5, 0.5,
-		-1.0, 1.0, 1.0,    0.5, 0.5, 0.5,
-		1.0, 1.0, 1.0,     0.5, 0.5, 0.5,
-		1.0, 1.0, -1.0,    0.5, 0.5, 0.5,
+		-1.0, 1.0, -1.0,   1.0, 1.0, 0.0,
+		-1.0, 1.0, 1.0,    0.7, 0.5, 1.0,
+		1.0, 1.0, 1.0,     0.1, 0.5, 0.5,
+		1.0, 1.0, -1.0,    0.5, 1.0, 0.6,
 
 		// Left
-		-1.0, 1.0, 1.0,    0.75, 0.25, 0.5,
-		-1.0, -1.0, 1.0,   0.75, 0.25, 0.5,
-		-1.0, -1.0, -1.0,  0.75, 0.25, 0.5,
-		-1.0, 1.0, -1.0,   0.75, 0.25, 0.5,
+		-1.0, 1.0, 1.0,     1.0, 1.0, 0.0,
+		-1.0, -1.0, 1.0,   0.7, 0.5, 1.0,
+		-1.0, -1.0, -1.0,  0.1, 0.5, 0.5,
+		-1.0, 1.0, -1.0,   0.5, 1.0, 0.6,
 
 		// Right
-		1.0, 1.0, 1.0,    0.25, 0.25, 0.75,
-		1.0, -1.0, 1.0,   0.25, 0.25, 0.75,
-		1.0, -1.0, -1.0,  0.25, 0.25, 0.75,
-		1.0, 1.0, -1.0,   0.25, 0.25, 0.75,
+		1.0, 1.0, 1.0,    1.0, 1.0, 0.0,
+		1.0, -1.0, 1.0,   0.7, 0.5, 1.0,
+		1.0, -1.0, -1.0,  0.1, 0.5, 0.5,
+		1.0, 1.0, -1.0,   0.5, 1.0, 0.6,
 
 		// Front
-		1.0, 1.0, 1.0,    1.0, 0.0, 0.15,
-		1.0, -1.0, 1.0,    1.0, 0.0, 0.15,
-		-1.0, -1.0, 1.0,    1.0, 0.0, 0.15,
-		-1.0, 1.0, 1.0,    1.0, 0.0, 0.15,
+		1.0, 1.0, 1.0,    1.0, 1.0, 0.0,
+		1.0, -1.0, 1.0,    0.7, 0.5, 1.0,
+		-1.0, -1.0, 1.0,    0.1, 0.5, 0.5,
+		-1.0, 1.0, 1.0,    0.5, 1.0, 0.6,
 
 		// Back
-		1.0, 1.0, -1.0,    0.0, 1.0, 0.15,
-		1.0, -1.0, -1.0,    0.0, 1.0, 0.15,
-		-1.0, -1.0, -1.0,    0.0, 1.0, 0.15,
-		-1.0, 1.0, -1.0,    0.0, 1.0, 0.15,
+		1.0, 1.0, -1.0,    1.0, 1.0, 0.0,
+		1.0, -1.0, -1.0,    0.7, 0.5, 1.0,
+		-1.0, -1.0, -1.0,    0.1, 0.5, 0.5,
+		-1.0, 1.0, -1.0,    0.5, 1.0, 0.6,
 
 		// Bottom
-		-1.0, -1.0, -1.0,   0.5, 0.5, 1.0,
-		-1.0, -1.0, 1.0,    0.5, 0.5, 1.0,
-		1.0, -1.0, 1.0,     0.5, 0.5, 1.0,
-		1.0, -1.0, -1.0,    0.5, 0.5, 1.0,
+		-1.0, -1.0, -1.0,   1.0, 1.0, 0.0,
+		-1.0, -1.0, 1.0,    0.7, 0.5, 1.0,
+		1.0, -1.0, 1.0,     0.1, 0.5, 0.5,
+		1.0, -1.0, -1.0,    0.5, 1.0, 0.6
 	]; //array not yet used by the graphics card
 	
 	
@@ -232,7 +232,7 @@ var InitDemo = function () {
 	var projMatrix = new Float32Array(16);	// Variables on CPU-RAM
 	
 	mat4.identity(worldMatrix); // identity matrix of 16 elements for mWorld 
-	mat4.lookAt(viewMatrix,[0,0,-5],[0,0,0],[0,1,0] );
+	mat4.lookAt(viewMatrix,[0,0,-8],[0,0,0],[0,1,0] );
 	mat4.perspective(projMatrix,glMatrix.toRadian(45),canvas.width /canvas.height, 0.1, 1000.0 ); 
 	//mat4.identity(viewMatrix);  // identity matrix of 16 elements for mWiew
 	//mat4.identity(projMatrix);  // identity matrix of 16 elements for mProj
@@ -270,7 +270,7 @@ var InitDemo = function () {
 		gl.uniformMatrix4fv(matWorldUniformLocation, gl.FALSE, worldMatrix);
 		
 		
-		gl.clearColor(0.75, 0.85, 0.8, 1.0);
+		gl.clearColor(1.0, 1.0, 1.0, 1.0);
 		gl.clear(gl.DEPTH_BUFFER_BIT |  gl.COLOR_BUFFER_BIT);
 			gl.drawElements(gl.TRIANGLES, Cubeindices.length, gl.UNSIGNED_SHORT, 0);//used to draw index elements istead to a simple triangle
 		
